@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:instagram_clone/features/auth/login_page.dart';
+import 'package:instagram_clone/constants/navigation_constants.dart';
+import 'package:instagram_clone/features/auth/pages/login_page.dart';
+import 'package:instagram_clone/features/auth/pages/signup_page.dart';
+import 'package:instagram_clone/features/home/pages/home_page.dart';
 import 'package:instagram_clone/theme/app_theme.dart';
 
 void main() {
@@ -12,11 +15,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme.theme,
-      home: const SafeArea(
-        child: LoginPage(),
+    return SafeArea(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Instagram Clone',
+        theme: AppTheme.theme,
+        initialRoute: NavigationConstants.loginPage,
+        routes: {
+          NavigationConstants.loginPage: (context) => const LoginPage(),
+          NavigationConstants.signupPage: (context) => const SignUpPage(),
+          NavigationConstants.homePage: (context) => const HomePage(),
+        },
       ),
     );
   }
