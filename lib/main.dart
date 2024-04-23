@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:instagram_clone/features/auth/login_page.dart';
+import 'package:instagram_clone/theme/app_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,11 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+      theme: AppTheme.theme,
+      home: const SafeArea(
+        child: LoginPage(),
       ),
-      home: const HomePage(),
     );
   }
 }
