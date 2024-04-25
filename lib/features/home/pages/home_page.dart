@@ -1,9 +1,10 @@
-import 'dart:convert';
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:instagram_clone/features/home/widgets/home_app_bar.dart';
 import 'package:instagram_clone/features/home/widgets/home_story_widget.dart';
+import 'package:instagram_clone/features/home/widgets/post_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,11 +13,24 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: homeAppBar,
-      body: const Column(
+      body: Column(
         children: [
           // Story section
-          HomeStoryWidget(),
-          // TODO: display all post section
+          const HomeStoryWidget(),
+          const SizedBox(height: 10),
+          // all post section
+          Expanded(
+            child: SizedBox(
+              child: ListView.builder(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemCount: 8,
+                itemBuilder: (context, index) {
+                  return const PostWidget();
+                },
+              ),
+            ),
+          ),
         ],
       ),
       // bottom navigation bar
